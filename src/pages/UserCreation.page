@@ -1,0 +1,71 @@
+<apex:page standardController="User" extensions="CreateUser">
+    <apex:form >
+        <apex:pageBlock mode="edit">
+             <apex:pageBlockButtons >
+                 <apex:commandButton value="Save" action="{!Save}"/>
+                 <apex:commandButton value="Cancel" action="{!Cancel}"/>                           
+             </apex:pageBlockButtons>
+        
+            <apex:pageBlockSection title="UserInformation" collapsible="False" columns="2">
+            
+                <apex:inputField value="{!User.IsActive}"/>
+                <apex:inputField value="{!User.FirstName}"/>
+                <apex:inputField value="{!User.LastName}"/>
+                <apex:inputField value="{!User.UserName}"/>
+                <apex:inputField value="{!User.Alias}"/>
+                <apex:inputField value="{!User.Email}"/>
+                <apex:inputField value="{!User.UserRoleID}"/>
+                 <apex:inputField value="{!User.CommunityNickname}"/>
+                <!--<apex:inputField value="{!User.userType}"/-->       
+            </apex:pageBlockSection>
+        
+           <apex:pageBlockSection >
+           
+                <apex:inputField value="{!User.Phone}"/>
+                <apex:inputField value="{!User.Extension}"/>
+                <apex:inputField value="{!User.Fax}"/>
+                <apex:inputField value="{!User.EmployeeNumber}"/>
+                <apex:inputField value="{!User.FederationIdentifier}"/>
+                <apex:inputField value="{!User.Division}"/>
+                <apex:inputField value="{!User.Department}"/>                   
+           
+           </apex:pageBlockSection>
+           
+            <apex:pageBlockSection title="Liscence Information" collapsible="True" columns="2" >
+                <apex:pageBlockSectionItem >
+
+          <apex:outputLabel value="License" for="lic"></apex:outputLabel>
+            <apex:actionRegion >
+              <apex:selectList id="mgr" value="{!User.UserType}" size="1" title="Manager">
+                 <apex:selectOptions value="{!license}"/>
+                    <apex:actionSupport event="onchange" rerender="selectedProfileId"/>
+                    
+           </apex:selectList>
+            </apex:actionRegion>
+           </apex:pageBlockSectionItem>
+                 <apex:pageBlockSectionItem id="selectPRofileI" >
+                    <apex:outputLabel value="Profile" for="pro"></apex:outputLabel>
+                      <apex:selectList value="{!User.ProfileId}" multiselect="false" size="1" id="selectedProfileId">
+                       <apex:selectOptions value="{!profile}" />
+                           </apex:selectList>
+
+                         </apex:pageBlockSectionItem>
+
+            </apex:pageBlockSection>
+             
+             <apex:pageBlockSection title="Other Information" columns="1" collapsible="false">
+
+                   <apex:inputField value="{!User.EmailEncodingKey}"/>
+                   <apex:inputField value="{!User.TimeZoneSidKey}"/>
+                   <apex:inputField value="{!User.LocaleSidKey}"/>
+                   <apex:inputField value="{!User.LanguageLocaleKey}"/>
+
+               </apex:pageBlockSection>
+
+                     </apex:pageBlock>
+    
+    
+    
+    </apex:form>
+  
+</apex:page>
