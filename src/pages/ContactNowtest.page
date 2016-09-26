@@ -1,0 +1,22 @@
+<apex:page standardController="Contact" extensions="ContactPhotoExtension">
+<apex:form >
+ <apex:pageblock title="Contact With Image">
+  <apex:pageblockButtons >
+   <apex:commandButton action="{!Save}" value="Save with Image"/>
+    </apex:pageblockButtons>
+    
+    <apex:pageblockSection title="Contact Information">    
+     <apex:inputField value="{!Contact.FirstName}"/>
+     <apex:inputField value="{!Contact.LastName}"/>
+     <apex:inputField value="{!Contact.Email}"/>
+     <apex:inputField value="{!Contact.Phone}"/>
+         <apex:inputField value="{!Contact.Srinivas_Images_Path__c}"/>
+         <apex:inputField value="{!Contact.Srinivas_Picture__c}"/>
+    </apex:pageblockSection>
+     <apex:pageBlockSection title="Upload Image Here">
+      <apex:inputFile value="{!picture}" accept="image/*" />
+     
+     </apex:pageBlockSection>
+ </apex:pageblock>
+</apex:form>
+</apex:page>

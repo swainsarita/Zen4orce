@@ -1,5 +1,5 @@
 public with sharing class ObjectTriggerHandler { 
- public static void onBeforeUpdate(List<Lead> leadlist ,Map<Id, Lead> mapLeadOld,Boolean isInsert, Boolean isUpdate) {
+ /*public static void onBeforeUpdate(List<Lead> leadlist ,Map<Id, Lead> mapLeadOld,Boolean isInsert, Boolean isUpdate) {
         // logics for Update.
 try {    
         List<String> leadIds = new List<String>();
@@ -40,7 +40,7 @@ try {
           
             }
         }
-        
+       
           
     public static void onAfterUpdateAccount(List<Account> accountlist, Map<Id, Account> mapAccount) {
     try { 
@@ -83,30 +83,30 @@ try {
           
             }     
             
-    }
-	public static void changeContactOwner(List<Contact> contactlist, List <Contact> contacts) {
-		
-		List <Id> AccountIds = new List <Id>();
-		List <Account> accounts = new List<Account>();
-		//List <Contact> contacts = new List<Contact>();
+    }*/
+    public static void changeContactOwner(List<Contact> contactlist, List <Contact> contacts) {
+        
+        List <Id> AccountIds = new List <Id>();
+        List <Account> accounts = new List<Account>();
+        //List <Contact> contacts = new List<Contact>();
 
-		List <Account> accSave = new List<Account>();
-		List <Contact> contSave = new List<Contact>();
-		
-			for(Contact c:contactlist ){
-			if(c.AccountId !=NULL)
-			AccountIds.add(c.AccountId);
+        List <Account> accSave = new List<Account>();
+        List <Contact> contSave = new List<Contact>();
+        
+            for(Contact c:contactlist ){
+            if(c.AccountId !=NULL)
+            AccountIds.add(c.AccountId);
             }
-			System.debug('AccountIds=='+AccountIds);
-	    accounts = [Select Id, OwnerId From Account Where Id IN :AccountIds];
-		System.debug('accounts=='+accounts);
+            System.debug('AccountIds=='+AccountIds);
+        accounts = [Select Id, OwnerId From Account Where Id IN :AccountIds];
+        System.debug('accounts=='+accounts);
         contacts = [Select Id, 
                     AccountId, 
                     OwnerId 
                     From Contact Where AccountId IN :AccountIds and Id NOT IN :contactlist];
         
-		System.debug('contacts=='+contacts);
-		for(Contact c:contactlist ){
+        System.debug('contacts=='+contacts);
+        for(Contact c:contactlist ){
             for(Account acc:accounts){
                 if(c.AccountId == acc.Id && c.OwnerId !=acc.OwnerId){
                 acc.OwnerId = c.OwnerId;
@@ -121,8 +121,8 @@ try {
                 }
             }
         }
-		update(accSave);
+        update(accSave);
         update(contSave);
-		
-	}
+        
+    }
 }

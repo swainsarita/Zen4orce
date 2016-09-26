@@ -1,0 +1,101 @@
+<apex:page standardController="User" tabStyle="Account">
+ 
+ 
+   
+<!--    
+<apex:sectionHeader title="Welcome" subtitle="{!User.Name}" help="/help/doc/user_ed.jsp?loc=help"></apex:sectionHeader> -->
+    <apex:form >
+        <apex:pageBlock mode="edit">
+        <apex:pageMessages />
+            <apex:pageBlockButtons >
+                    <apex:commandButton action="{!save}" value=" Save "></apex:commandButton>
+                    <apex:commandButton action="{!cancel}" value="Cancel"></apex:commandButton>
+                 </apex:pageBlockButtons>
+              
+              <apex:pageBlockSection title="User Information" columns="2" collapsible="false">  
+                
+               
+                  <apex:inputField value="{!User.IsActive}"/>
+                  <apex:inputField value="{!User.FirstName}"/>
+                  <apex:inputField value="{!User.Username}"/>
+                  <apex:inputField value="{!User.LastName}"/>
+                  <apex:inputField value="{!User.Email}"/>
+                  <apex:inputField value="{!User.alias}"/>
+                  <apex:inputField value="{!User.UserRoleId}"/>
+                  
+                 
+                  </apex:pageBlockSection>
+                 <!-- <apex:inputField value="{!User.UserType}"/> -->
+            
+           
+            
+
+              <!--  <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="User" for="usr"></apex:outputLabel>
+                   
+                    <apex:selectList value="{!selectedRoleId}" multiselect="false" size="1" id="selectedRoleId">
+                       <apex:selectOptions value="{!userList}" />
+                    </apex:selectList>
+                    </apex:pageBlockSectionItem>
+            
+            -->
+                    
+                    
+            <apex:pageBlockSection >
+              <!--    <apex:inputField value="{!User.ProfileId}"/> -->
+                   <apex:inputField value="{!User.Phone}"/>
+                   <apex:inputField value="{!User.Extension}"/>
+                   <apex:inputField value="{!User.Fax}"/>
+                   <apex:inputField value="{!User.EmployeeNumber}"/>
+                   <apex:inputField value="{!User.Title}"/>
+                   <apex:inputField value="{!User.CompanyName}"/>
+                   <apex:inputField value="{!User.Division}"/>
+                   <apex:inputField value="{!User.Department}"/>
+                   <apex:inputField value="{!User.CommunityNickName}"/>
+            </apex:pageBlockSection>
+
+                 <!--  <apex:inputField value="{!User.UserType}"/> -->
+                   
+                   
+                  
+              
+                    <apex:pageBlockSection columns="1" showHeader="false" title="License">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="License" for="lic"></apex:outputLabel>
+                    <apex:selectList id="mgr" value="{!User.UserType}" size="1" title="Manager">
+                    
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Profile" for="pro"></apex:outputLabel>
+                   
+                    <apex:selectList value="{!User.ProfileId}" multiselect="false" size="1" id="selectedProfileId">
+                     
+                    </apex:selectList>
+                    </apex:pageBlockSectionItem>
+            </apex:pageBlockSection> 
+            
+              
+              
+               <apex:pageBlockSection title="Other Information" columns="1" collapsible="false">
+                   <apex:inputField value="{!User.EmailEncodingKey}"/>
+                   <apex:inputField value="{!User.TimeZoneSidKey}"/> 
+                   <apex:inputField value="{!User.LocaleSidKey}"/>
+                   <apex:inputField value="{!User.LanguageLocaleKey}"/>
+               </apex:pageBlockSection>
+               
+            <!--   <apex:pageBlockSection columns="1" showHeader="false" title="License">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="License" for="lic"></apex:outputLabel>
+                    <apex:selectList id="mgr" value="{!User.UserType}" size="1" title="Manager">
+                        <apex:selectOptions value="{!license}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            
+            -->
+            
+              </apex:pageBlock>
+              </apex:form>
+   
+</apex:page>

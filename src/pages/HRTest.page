@@ -1,0 +1,27 @@
+<apex:page standardController="HR__c" extensions="HRTest_Extension">
+    <apex:form >
+      <apex:pageBlock >
+          <apex:pageBlockButtons >
+          <apex:commandButton action="{!edit}" value="Edit"></apex:commandButton>
+          <apex:commandButton action="{!delete}" value="Delete"></apex:commandButton>
+          <apex:commandButton action="{!activateuser}" value="Activate User"></apex:commandButton>
+          </apex:pageBlockButtons>
+          <apex:pageBlockSection title="HR Detail" columns="2">
+              <apex:outputField value="{!HR__c.Email__c}"/>
+              <apex:outputField value="{!HR__c.Employee_No__c   }"/>
+              <apex:outputField value="{!HR__c.First_Name__c}"/>
+              <apex:outputField value="{!HR__c.Job_Code__c}"/>
+              <apex:outputField value="{!HR__c.Job_Title__c}"/>
+              <apex:outputField value="{!HR__c.Last_Name__c}"/>
+             
+          </apex:pageBlockSection> 
+          
+          <apex:pageBlockSection title="UserINfo">
+          <apex:outputField value="{!HR__c.User__c}"/>
+          
+          
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+    </apex:form>
+</apex:page>

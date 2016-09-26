@@ -1,0 +1,30 @@
+<apex:page standardController="Contact" extensions="ContactAttachmentController">
+    <apex:form >
+<apex:pageblock title="Attachments" >
+   <apex:inputHidden value="{!Contact.Name}"/>
+   <apex:inputFile value="{!bl}" filename="{!fileName}"/>
+   <apex:commandButton value="Add Selected File" action="{!save}"/>
+   <apex:outputText value="  You must first select the file!" rendered="{!showError}" />
+   
+   <apex:pageBlockTable Value="{!Contact.Attachments}"
+       var="item" columns="4" >
+     <apex:column HeaderValue="Name"  >    
+       <apex:outputLink value="/{!item.id}" id="the_link"
+           rendered="{!NOT(Contains(item.Name,'IN_'))}" target="_top">
+         <apex:outputField value="{!item.Name}" />
+       </apex:outputLink>
+     </apex:column>
+     <apex:column HeaderValue="Size" >
+       <apex:outputField value="{!item.BodyLength }" />
+     </apex:column>
+     <apex:column HeaderValue="Last Modified Date" >
+       <apex:outputField value="{!item.LastModifiedDate }" />
+     </apex:column>
+     <apex:column HeaderValue="Created By" >
+       <apex:outputField value="{!item.Createdbyid }" />
+     </apex:column>
+   </apex:pageBlockTable>
+</apex:pageblock>
+
+</apex:form>
+</apex:page>

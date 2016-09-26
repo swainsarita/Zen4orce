@@ -11,4 +11,7 @@
     <tab>Project_Detail__c</tab>
     <tab>Client__c</tab>
     <tab>Project__c</tab>
+    <tab>BioBriefing__c</tab>
+    <tab>ActiveUser</tab>
+    <tab>User__c</tab>
 </CustomApplication>

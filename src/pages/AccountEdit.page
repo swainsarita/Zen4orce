@@ -1,0 +1,23 @@
+<apex:page standardController="Account">
+    <style type="text/css">
+        .buttonStyle { width:15%; background-color:green; text-align:center; padding-top:4px; }
+    </style>
+
+    <apex:form >
+    <apex:pageBlock title="Edit Account">
+        <apex:pageMessages showDetail="true" />
+
+        <apex:pageBlockSection columns="1">
+            <apex:inputField value="{! Account.Name }"/>
+            <apex:inputField value="{! Account.Phone }"/>        
+            <apex:inputField value="{! Account.Industry }"/>        
+            <apex:inputField value="{! Account.AnnualRevenue }"/>
+        </apex:pageBlockSection>
+
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{! save }" value="Save" styleClass="buttonStyle" style="background:#F4A460"/>        
+        </apex:pageBlockButtons>
+
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

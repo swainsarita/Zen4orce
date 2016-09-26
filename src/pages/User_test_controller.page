@@ -1,0 +1,29 @@
+<apex:page controller="User_test_controller" tabstyle="Account" >
+    <apex:form >
+     
+	 <apex:dataTable id="accounts" value="{!use1}" var="conz">
+ <apex:pageBlock >
+          <apex:pageBlockButtons >
+         
+          <apex:commandButton action="{!save}" value="Save"></apex:commandButton>
+          <apex:commandButton action="{!activateuser}" value="Activate User"></apex:commandButton>
+          </apex:pageBlockButtons>
+          <apex:pageBlockSection title="HR Detail" columns="2">
+              <apex:outputField value="{!use1.Name}"/>
+              <apex:outputField value="{!use1.Email__c   }"/>
+              <apex:outputField value="{!use1.FirstName__c}"/>
+              
+             
+          </apex:pageBlockSection> 
+          
+          <apex:pageBlockSection title="UserINfo">
+          <!--<apex:outputField value="{!account.ActiveUser__c}"/>-->
+          
+          
+          </apex:pageBlockSection>
+      </apex:pageBlock>
+          </apex:dataTable>
+       
+        
+    </apex:form>
+</apex:page>

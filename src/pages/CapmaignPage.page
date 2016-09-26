@@ -1,0 +1,3 @@
+<apex:page standardController="Campaign" sidebar="false" recordSetVar="Campaign ">
+    <apex:enhancedList height="500" rowsPerPage="25" type="Campaign" width="200" />
+</apex:page>

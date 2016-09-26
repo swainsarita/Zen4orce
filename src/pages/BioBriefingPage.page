@@ -1,0 +1,37 @@
+<apex:page standardcontroller="BioBriefing__c"  tabstyle="Account" showHeader="true" sidebar="false">
+   <apex:form >
+    <style>
+    .pageDescription, .pageType {
+    color: Red !important;
+}
+    </style>
+       <apex:sectionheader title="BioBriefing" subtitle="{!if(BioBriefing__c.Id==null,'BioBriefing',BioBriefing__c.Name)}" ></apex:sectionheader>
+        <apex:pageblock mode="save" id="BioBriefing" title="BioBriefing Detail">
+            <apex:pageblockbuttons >
+                <apex:commandbutton action="{!save}" value="save"></apex:commandbutton>
+           <!-- <apex:commandbutton action="{!cancel}" value="Cancel"></apex:commandbutton>
+                <apex:commandbutton action="{!Upload Photo}" value="Upload Photo"></apex:commandbutton>-->
+            </apex:pageblockbuttons>
+            <apex:pageblocksection id="BioBriefingformationPBS" title="BioBriefing Information">
+               
+               <apex:inputfield value="{!BioBriefing__c.OwnerId}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Phone__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Name}"  required="true"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Home_Phone__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.AccountName__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Mobile__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Title__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Fax__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Birth_Date__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Email__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Mailing_Address__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Other_Address__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Language__c}"></apex:inputfield>
+               <apex:inputfield value="{!BioBriefing__c.Level__c}"></apex:inputfield>
+                <apex:inputfield value="{!BioBriefing__c.Attachment_Id__c}"></apex:inputfield>
+                <apex:inputfield value="{!BioBriefing__c.Biographic_Photo__c}"></apex:inputfield>
+                
+            </apex:pageblocksection>
+       </apex:pageblock>
+   </apex:form> 
+</apex:page>
