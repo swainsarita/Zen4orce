@@ -1,0 +1,91 @@
+<apex:page controller="QueryBuilderDesign" sidebar="false" tabStyle="Account" showHeader="false"> 
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <meta charset="utf-8"/>
+    </head>
+    <style>
+        .myFormStyle {
+            background-color: blue;
+        }
+    </style>
+   
+    <apex:form styleClass="myFormStyle" id="newId">
+        <div style="background-color: #FFF0F5;width: 100%; height: 100%; font-family: Times;color:black;font-size: 16pt;font-weight:bold">
+            <marquee scrollamount="10" >
+                <apex:image id="theImage" value="{!$Resource.myResourceImage}" width="60" height="60"/>
+                    <h2>
+            Q U E R Y   -   B U I L D E R </h2>
+            </marquee>
+        </div>
+        <apex:pageBlock > 
+            <div  class= "row" style="background:#FFF0F5">
+                <div class = "col-sm-4">
+                    </div>
+                    <div class = "col-sm-4">
+                        <apex:pageBlockButtons location="Bottom">
+                            <apex:commandButton value="Execute Query" action="{!getRecords}" rerender="ShowRecords,ShowMessages" style="color:Blue ;background:#99b3ff:padding-top:4px" oncomplete="myfunction();"/>
+                        <apex:actionFunction action="{!clearValues}" name="myfunction" reRender="newId"/>
+                    </apex:pageBlockButtons>
+            <br/><br/>
+            <apex:pageMessages id="ShowMessages"/> 
+            <apex:pageBlockSection title="" columns="1" collapsible="false" > 
+                <apex:outputlabel value="Object Names :"   style="font-weight:bold;font-size: 12pt;font-family: Times;"/>
+                    <apex:selectList value="{!selectedObject}" size="1"  style="font-size: 12pt;font-family: Times;"> 
+                            <!--<apex:actionFunction name="Myfunction" action="{!getQueryValue}"/>-->
+                        <apex:actionSupport event="onchange" action="{!getFields}" /> 
+                    <apex:selectOptions value="{!lstOptions}" /> 
+                </apex:selectList> 
+            </apex:pageBlockSection>
+            <br/><br/>
+            <apex:pageBlockSection title="" rendered="{!AND(NOT(ISNULL(lstfieldname)),lstfieldname.size > 0)}" 
+                    columns="1" collapsible="false"> 
+                        <apex:outputlabel value="Select Fields :" style="font-weight:bold;font-size: 12pt;font-family: Times;"/>
+                            <apex:selectList multiselect="true" size="7" value="{!lstSelectedFields}" onclick="Myfunction();"> 
+						        <apex:actionFunction name="Myfunction" action="{!getValue}"/>
+						    <apex:selectOptions value="{!lstfieldname}"/>
+					</apex:selectList>
+                <br/><br/>
+                
+                <apex:SelectRadio value="{!selectedRadio}"  onclick="Myfunction();" style="width:300px;" >
+                    <apex:actionFunction name="Myfunction" action="{!getValue}"/>
+                        <apex:selectOptions value="{!RadioValue}" >
+                            </apex:selectOptions>
+					</apex:SelectRadio><br/><br/>
+					 
+                <apex:outputLabel style="font-weight:bold;font-size: 14pt;font-family: Times;"> Maximum # of records to display : </apex:outputLabel>
+                    <apex:selectList size="1" value="{!selectedstage}" onclick="Myfunction();" style="font-size: 14pt;font-family: Times;" >
+                        <apex:actionFunction name="Myfunction" action="{!getValue}"/>
+                            <apex:selectOptions value="{!stagelist }" />
+                    </apex:selectList>
+                </apex:pageBlockSection> 
+              
+			<apex:pageBlockSection id="show"><br/><br/>
+                <apex:inputTextarea label="SOQL Query" value="{!strQuery}" id="ShowRecords" rendered="true" cols="80" style="font-size: 14pt;font-family: Times;"/>
+            </apex:pageBlockSection>
+          
+            <apex:outputPanel id="ShowRecords"> 
+                <apex:pageBlockSection title="" columns="1" rendered="{!AND(NOT(ISNULL(lstObject)),lstObject.size > 0)}" collapsible="false"> 
+                     <apex:outputlabel value=" Related Records :" style="font-weight:bold;font-size: 14pt;font-family: Times;"/> 
+                        <apex:pageBlockTable value="{!lstObject}" var="obj"> 
+                            <apex:repeat value="{!lstSelectedFields}" var="FieldName"> 
+                            <!--<apex:column value="{!obj[FieldName]}"/> -->
+                                    <apex:column >
+                                        <apex:facet name="header">{!FieldName}</apex:facet>
+                                        <apex:outputLink value="/{!obj.Id}">{!obj[FieldName]}</apex:outputLink>
+                                    </apex:column>
+                                </apex:repeat> 
+                            </apex:pageBlockTable> 
+                </apex:pageBlockSection> 
+                
+            </apex:outputPanel>  
+            </div>
+                <div class = "col-sm-4">
+                    </div>
+            </div>
+        </apex:pageBlock>
+    </apex:form> 
+</apex:page>
